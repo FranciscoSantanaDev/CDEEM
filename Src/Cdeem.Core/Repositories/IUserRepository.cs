@@ -10,5 +10,6 @@ namespace Cdeem.Core.Repositories
     {
         Task AddAsync (User user);
         Task UpdateAsync (User user);
+        Task<User> GetUserAsync(string Email, string password);
     }
 }

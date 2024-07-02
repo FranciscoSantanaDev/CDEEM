@@ -1,5 +1,6 @@
 ﻿using Cdeem.Application.InputModels;
 using Cdeem.Application.Services;
+using Cdeem.Application.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Cdeem.API.Controllers
@@ -9,12 +10,32 @@ namespace Cdeem.API.Controllers
     public class UserController : Controller
     {
         private readonly IUserServices _userServices;
+
+        public UserController(IUserServices userServices)
+        {
+            _userServices = userServices;
+        }
+
         [HttpPost]
         public async Task<IActionResult> Post(AddUserInputModel model)
         {
              await _userServices.Add(model);
 
             return Created();
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Put(AddUserInputModel model)
+        {
+            await _userServices.Update(model);
+
+            return Created();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Get(string email, string password)
+        {
+            return Ok(await _userServices.GetUser(email, password));
         }
     }
 }

@@ -2,7 +2,7 @@
 {
     public class User : EntityBase
     {
-        public User(string name, string email, string password, List<Skill> skills) : base()
+        public User(string name, string email, string password, IEnumerable<Skill> skills) : base()
         {
             Name = name;
             Email = email;
@@ -16,6 +16,6 @@
 
         public string Password { get; private set; }
 
-        public List<Skill> Skills{ get; private set; }
+        public IEnumerable<Skill> Skills{ get; private set; }
     }
 }

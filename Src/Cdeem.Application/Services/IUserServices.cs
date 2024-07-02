@@ -1,4 +1,6 @@
 ﻿using Cdeem.Application.InputModels;
+using Cdeem.Application.ViewModel;
+using Cdeem.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +13,7 @@ namespace Cdeem.Application.Services
     {
         Task Add(AddUserInputModel addUserInputModel);
         Task Update(AddUserInputModel addUserInputModel);
+
+        Task<UserViewModel> GetUser(string Email, string password);
     }
 }
