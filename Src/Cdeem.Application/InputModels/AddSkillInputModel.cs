@@ -1,6 +1,7 @@
 ﻿using Cdeem.Core.Enum;
 using Cdeem.Core.Entities;
 using Cdeem.Core.ValueObject;
+using Cdeem.Application.ViewModel;
 
 
 namespace Cdeem.Application.InputModels
@@ -10,9 +11,9 @@ namespace Cdeem.Application.InputModels
         public Skill ToEntity()
             => new Skill(Title,Description, Notes.Select(n=>n.ToValueObject()).ToList(),SkillLevel, IsPublic );
     };
-    public record NoteInputModel(string Annotation, DateTime CreatedDate)
+    public record NoteInputModel(string Annotation, DateTime CreatedDate , AddUserInputModel User)
     {
         public Note ToValueObject()
-            => new Note( Annotation, CreatedDate );
+            => new Note( Annotation, CreatedDate, User.ToEntity());
     };
 }

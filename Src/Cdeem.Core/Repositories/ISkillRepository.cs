@@ -11,5 +11,6 @@ namespace Cdeem.Core.Repositories
         Task AddAsync(Skill skill);
         Task UpdateAsync(Skill skill);
         Task Delete(Skill skill);
+        Task<Skill> GetSkillAsync(Guid Id);
     }
 }

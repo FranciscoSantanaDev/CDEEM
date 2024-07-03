@@ -1,4 +1,5 @@
 ﻿using Cdeem.Core.Repositories;
+using Cdeem.Infra.Messaging;
 using Cdeem.Infra.Persistence;
 using Cdeem.Infra.Persistence.Repositories;
 using Microsoft.Extensions.Configuration;
@@ -12,7 +13,7 @@ namespace Cdeem.Infra
     {
         public static IServiceCollection AddInfra(this IServiceCollection services)
         {
-            services.AddMongo().AddRepository();
+            services.AddMongo().AddRepository().AddMessageBus();
             return services;
         }
 
@@ -52,6 +53,12 @@ namespace Cdeem.Infra
         public static IServiceCollection AddRepository(this IServiceCollection services) 
         {
             services.AddScoped<IUserRepository,UserRepository>();
+            return services;
+        }
+
+        public static IServiceCollection AddMessageBus(this IServiceCollection services)
+        {
+            services.AddScoped<IMessageBusService, RabbitMqService>();
             return services;
         }
     }
