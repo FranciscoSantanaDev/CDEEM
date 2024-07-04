@@ -52,7 +52,7 @@ namespace Cdeem.Infra
 
         public static IServiceCollection AddRepository(this IServiceCollection services) 
         {
-            services.AddScoped<IUserRepository,UserRepository>();
+            services.AddScoped<IUserRepository,UserMongoRepository>();
             return services;
         }
 

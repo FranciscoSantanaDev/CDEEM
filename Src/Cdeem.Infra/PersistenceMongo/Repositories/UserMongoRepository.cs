@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace Cdeem.Infra.Persistence.Repositories
 {
-    public class UserRepository : IUserRepository
+    public class UserMongoRepository : IUserRepository
     {
         private readonly IMongoCollection<User> _collection;
-        public UserRepository(IMongoDatabase database)
+        public UserMongoRepository(IMongoDatabase database)
         {
             _collection = database.GetCollection<User>("Users");
         }
