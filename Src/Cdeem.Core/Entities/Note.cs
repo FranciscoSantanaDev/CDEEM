@@ -9,17 +9,21 @@ namespace Cdeem.Core.ValueObject
 {
     public class Note : EntityBase
     {
-        public Note(string annotation, DateTime createdDate, User user,Skill skill) : base()
+        public Note(string annotation, DateTime createdDate) : base()
         {
             Annotation = annotation;
             CreatedDate = createdDate;
-            User = user;
-            Skill = skill;
+        }
+
+        public Note(string annotation, DateTime createdDate, Guid skillId) : base()
+        {
+            Annotation = annotation;
+            CreatedDate = createdDate;
+            Skill = new Skill(skillId);
         }
 
         public string Annotation { get; private set; }
         public DateTime CreatedDate { get; private set; }
-        public User User { get; private set; }
         public Skill Skill { get; private set; }
     }
 }

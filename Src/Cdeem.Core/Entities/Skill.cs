@@ -15,6 +15,17 @@ namespace Cdeem.Core.Entities
             User = user;
         }
 
+        public Skill(string title, string description, ICollection<Note> notes, SkillLevel skillLevel, bool isPublic,Guid UserId) : base()
+        {
+            Title = title;
+            Description = description;
+            Notes = notes;
+            SkillLevel = skillLevel;
+            IsPublic = isPublic;
+            User = new User(UserId);
+        }
+
+        public Skill(Guid id):base(id){}
         public void AddNote(Note note) => Notes.Add(note);
 
         public string Title { get; private set; }

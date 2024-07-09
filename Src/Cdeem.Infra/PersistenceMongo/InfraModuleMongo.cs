@@ -7,11 +7,11 @@ using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
-namespace Cdeem.Infra
+namespace Cdeem.Infra.PersistenceMongo
 {
-    public static class InfraModule
+    public static class InfraModuleMongo
     {
-        public static IServiceCollection AddInfra(this IServiceCollection services)
+        public static IServiceCollection AddInfraMongo(this IServiceCollection services)
         {
             services.AddMongo().AddRepository().AddMessageBus();
             return services;
@@ -19,14 +19,14 @@ namespace Cdeem.Infra
 
         public static IServiceCollection AddMongo(this IServiceCollection services)
         {
-            services.AddSingleton<MongoDbOptions>(sp =>
-            {
-                var configuration = sp.GetService<IConfiguration>();
-                var options = new MongoDbOptions();
+            //services.AddSingleton(sp =>
+            //{
+            //    var configuration = sp.GetService<IConfiguration>();
+            //    var options = new MongoDbOptions();
 
-                configuration.GetSection("Mongo").Bind(options);
-                return options;
-            });
+            //    configuration.GetSection("Mongo").Bind(options);
+            //    return options;
+            //});
 
             services.AddSingleton<IMongoClient>(sp =>
             {
@@ -36,7 +36,8 @@ namespace Cdeem.Infra
                 var client = new MongoClient(options.ConnectionString);
                 return client;
             });
-            services.AddTransient(sp => {
+            services.AddTransient(sp =>
+            {
                 BsonDefaults.GuidRepresentation = GuidRepresentation.Standard;
 
                 var options = sp.GetService<MongoDbOptions>();
@@ -50,9 +51,9 @@ namespace Cdeem.Infra
             return services;
         }
 
-        public static IServiceCollection AddRepository(this IServiceCollection services) 
+        public static IServiceCollection AddRepository(this IServiceCollection services)
         {
-            services.AddScoped<IUserRepository,UserMongoRepository>();
+            services.AddScoped<IUserRepository, UserMongoRepository>();
             return services;
         }
 

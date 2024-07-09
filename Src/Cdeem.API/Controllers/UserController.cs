@@ -17,7 +17,7 @@ namespace Cdeem.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(AddUserInputModel model)
+        public async Task<IActionResult> PostUser(AddUserInputModel model)
         {
              await _userServices.Add(model);
 
@@ -25,7 +25,7 @@ namespace Cdeem.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Put(AddUserInputModel model)
+        public async Task<IActionResult> PutUser(AddUserInputModel model)
         {
             await _userServices.Update(model);
 
@@ -33,7 +33,7 @@ namespace Cdeem.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get(string email, string password)
+        public async Task<IActionResult> GetUser(string email, string password)
         {
             return Ok(await _userServices.GetUser(email, password));
         }

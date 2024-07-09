@@ -14,6 +14,6 @@ namespace Cdeem.Application.Services
         Task UpdateAsync(AddSkillInputModel model);
         Task Delete(Guid id);
         Task<SkillViewModel> GetSkillAsync(Guid Id);
-        Task AddNote(AddNoteInputModel model);
+        Task AddAsyncNote(AddNoteInputModel model);
     }
 }

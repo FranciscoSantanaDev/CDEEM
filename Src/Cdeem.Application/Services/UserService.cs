@@ -29,7 +29,7 @@ namespace Cdeem.Application.Services
         public async Task Update(AddUserInputModel model)
         {
             var user = await _userRepository.GetUserAsync(model.Email, model.Password);
-            user = new (model.Name, model.Email, model.Password, model.Skills.Select(s=>s.ToEntity()));
+            user = new (model.Name, model.Email, model.Password, model.Skills.Select(s=>s.ToEntity()).ToList());
             await _userRepository.UpdateAsync(user);
         }
     }

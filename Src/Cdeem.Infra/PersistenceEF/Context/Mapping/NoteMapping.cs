@@ -13,7 +13,7 @@ namespace Cdeem.Infra.PersistenceEF.Context.Mapping
     {
         public void Configure(EntityTypeBuilder<Note> builder)
         {
-            builder.ToTable("Note");
+            builder.ToTable("Notes");
 
             builder.Property(n=>n.Id)
                    .IsRequired();
@@ -27,10 +27,6 @@ namespace Cdeem.Infra.PersistenceEF.Context.Mapping
             builder.Property(n=>n.CreatedDate)
                    .HasColumnType("datetime")
                    .IsRequired();
-
-            builder.HasOne(n => n.User)
-                   .WithMany()
-                   .HasPrincipalKey(n => n.Id);
         }
     }
 }

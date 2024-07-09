@@ -9,6 +9,7 @@
             Password = password;
             Skills = skills;
         }
+        public User(Guid id) : base(id){}
 
         public string Name { get; private set; }
 

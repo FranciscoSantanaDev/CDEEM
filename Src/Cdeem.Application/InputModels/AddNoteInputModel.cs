@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Cdeem.Application.InputModels
 {
-    public record AddNoteInputModel(Guid SkillId,string Annotation, DateTime CreatedDate, AddUserInputModel User)
+    public record AddNoteInputModel(Guid SkillId,string Annotation, Guid UserId)
     {
         public Note ToEntity()
-            => new Note(Annotation, CreatedDate, User.ToEntity());
+            => new Note(Annotation, DateTime.Now, SkillId);
     };
 }

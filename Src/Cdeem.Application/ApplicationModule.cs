@@ -20,7 +20,7 @@ namespace Cdeem.Application
         private static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             services.AddScoped<IUserServices, UserService>();
-
+            services.AddScoped<ISkillServices,SkillService>();
             return services;
         }
     }

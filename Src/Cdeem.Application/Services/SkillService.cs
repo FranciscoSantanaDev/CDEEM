@@ -24,7 +24,7 @@ namespace Cdeem.Application.Services
             await _repository.AddAsync(skill);
         }
 
-        public async Task AddNote(AddNoteInputModel model)
+        public async Task AddAsyncNote(AddNoteInputModel model)
         {
             var skill = await _repository.GetSkillAsync(model.SkillId);
             skill.AddNote(model.ToEntity());

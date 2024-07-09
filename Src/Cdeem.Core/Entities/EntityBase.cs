@@ -12,6 +12,10 @@ namespace Cdeem.Core.Entities
         {
              Id = Guid.NewGuid();
         }
+        public EntityBase(Guid id)
+        {
+            Id = id;
+        }
         public Guid Id { get; private set; }
     }
 }

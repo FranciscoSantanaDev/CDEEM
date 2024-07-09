@@ -7,20 +7,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="PersistenceMongo\**" />
+    <EmbeddedResource Remove="PersistenceMongo\**" />
+    <None Remove="PersistenceMongo\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.6" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.6">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
-    <PackageReference Include="MongoDB.Driver" Version="2.27.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="RabbitMQ.Client" Version="6.8.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Cdeem.Core\Cdeem.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="PersistenceEF\Repositories\" />
   </ItemGroup>
 
 </Project>
