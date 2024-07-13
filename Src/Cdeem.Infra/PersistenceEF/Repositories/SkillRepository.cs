@@ -35,7 +35,7 @@ namespace Cdeem.Infra.PersistenceEF.Repositories
 
         public async Task<Skill> GetSkillAsync(Guid Id)
         {
-            var querry = _skill.Include(s => s.Notes).AsQueryable().Where(s => s.Id == Id);
+            var querry = _skill.Include(u=>u.User).Include(s => s.Notes).AsQueryable().Where(s => s.Id == Id);
 
             return await querry.FirstOrDefaultAsync();
         }

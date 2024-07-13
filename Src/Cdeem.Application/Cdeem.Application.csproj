@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Cdeem.Core\Cdeem.Core.csproj" />
+    <ProjectReference Include="..\Cdeem.Infra\Cdeem.Infra.csproj" />
   </ItemGroup>
 
 </Project>
