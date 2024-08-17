@@ -5,6 +5,10 @@ namespace Cdeem.Core.Entities
 {
     public class Skill : EntityBase
     {
+        public Skill()
+        {
+                
+        }
         public Skill(string title, string description, ICollection<Note> notes, SkillLevel skillLevel,bool isPublic, User user) : base()
         {
             Title = title;
